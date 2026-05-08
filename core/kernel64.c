@@ -37,5 +37,7 @@ void kernel_main(FB_info *info, Core *bInfo) {
 	if(ioapic == NULL) draw_string("IOAPIC NOT FOUND", info, 16, 0);
 	else draw_string("IOAPIC FOUND", info, 16, 0);
 
+	draw_string("WELCOME TO DABIIOS", info, 48, 0);
+
 	halt();
 }
