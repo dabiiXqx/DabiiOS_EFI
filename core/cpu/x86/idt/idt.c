@@ -14,12 +14,12 @@ void (*isr_stubs[])(void) = {
     isr28, isr29, isr30, isr31,
 };
 
-void set_idt_gate(void (*isr)(void), uint8_t index, int gate){
+void set_idt_gate(void (*isr)(void), uint8_t index, int gate, int ist){
 	uint64_t routine = (uint64_t)(uintptr_t)isr;
 
 	idt[index].offset_low = routine & 0xFFFF;
 	idt[index].seg_selector = 0x08;
-	idt[index].ist = 0;
+	idt[index].ist = ist;
 	idt[index].type = (gate) ? 0x8E : 0x8F;
 	idt[index].offset_mid = (routine >> 16) & 0xFFFF;
 	idt[index].offset_high = (routine >> 32) & 0xFFFFFFFF;
@@ -33,9 +33,13 @@ void idt_flush(IDTR *idtr) {
 }
 
 void idt_init(void){
-	for(int i = 0; i < 32; i++)
-		set_idt_gate(isr_stubs[i], i, INT_GATE);
+	for(int i = 0; i < 32; i++){
+		if(i == 8)
+			continue;
+		set_idt_gate(isr_stubs[i], i, INT_GATE, 0);
+	}
 
+	set_idt_gate(isr_stubs[8], 8, INT_GATE, 1);
 	idtr.limit = sizeof(idt) - 1;
 	idtr.base = (uint64_t)idt;
 
