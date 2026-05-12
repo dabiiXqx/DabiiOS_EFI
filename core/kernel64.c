@@ -39,5 +39,10 @@ void kernel_main(FB_info *info, Core *bInfo) {
 
 	draw_string("WELCOME TO DABIIOS", info, 48, 0);
 
+	uint64_t mempartest = uefi_memory_parser(bInfo);
+	if(mempartest != 0){
+		draw_string("TEST PARSER WORKS", info, 64, 0);
+	}
+
 	halt();
 }
