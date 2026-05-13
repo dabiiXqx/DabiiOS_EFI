@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include "UefiMemTypes.h"
 
-int uefi_memory_parser(Core *bInfo){
+uint64_t uefi_memory_parser(Core *bInfo){
 	/* experimental parser, parses uefi memory map and returns, saves total usable memory */
 	uint8_t *ptr = (uint8_t *)bInfo->MemoryMap;
 	uint8_t *end_ptr = ptr + bInfo->MemoryMapSize;
@@ -11,7 +11,7 @@ int uefi_memory_parser(Core *bInfo){
 	for(; ptr < end_ptr; ptr += bInfo->DescriptorSize){
 		MemoryDescriptor *memdesc = (MemoryDescriptor *)ptr;
 		if(memdesc->Type == EfiConventionalMemory)
-			count += memdesc->NumberOfPages;
+			count += (memdesc->NumberOfPages << 12);
 	}
-	return count
+	return count;
 }
