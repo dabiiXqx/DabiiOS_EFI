@@ -13,3 +13,4 @@
 #define halt() while (1) { asm volatile("hlt"); }
 
 extern FB_info *Pg_info;
+extern void setup_paging();

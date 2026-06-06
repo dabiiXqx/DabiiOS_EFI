@@ -1,7 +1,8 @@
 #include <info.h>
 #include "bitmap/KFont.h"
 
-#define GetIndex(c) ((c >= 'A' && c <= 'Z') ? c - 'A' : -1)
+#define GetAlphaIndex(c) ((c >= 'A' && c <= 'Z') ? c - 'A' : -1)
+#define GetNumIndex(c) ((c >= '0' && c <= '9') ? c - '0' + 26: -1)
 
 #define WHITE 0x00FFFFFF
 #define BLACK 0x00000000

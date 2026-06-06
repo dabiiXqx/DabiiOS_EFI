@@ -19,7 +19,7 @@ void set_idt_gate(void (*isr)(void), uint8_t index, int gate, int ist){
 
 	idt[index].offset_low = routine & 0xFFFF;
 	idt[index].seg_selector = 0x08;
-	idt[index].ist = ist;
+	idt[index].ist = ist & 0x7;
 	idt[index].type = (gate) ? 0x8E : 0x8F;
 	idt[index].offset_mid = (routine >> 16) & 0xFFFF;
 	idt[index].offset_high = (routine >> 32) & 0xFFFFFFFF;
