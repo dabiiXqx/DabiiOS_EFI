@@ -36,163 +36,163 @@ const char *emsg[] = {
 };
 
 void DE_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[0], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[0], 0, 0);
     halt();
 }
 void DB_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[1], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[1], 0, 0);
     halt();
 }
 void NMI_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[2], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[2], 0, 0);
     halt();
 }
 void BP_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[3], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[3], 0, 0);
     halt();
 }
 void OF_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[4], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[4], 0, 0);
     halt();
 }
 void BR_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[5], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[5], 0, 0);
     halt();
 }
 void UD_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[6], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[6], 0, 0);
     halt();
 }
 void NM_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[7], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[7], 0, 0);
     halt();
 }
 void DF_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[8], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[8], 0, 0);
     halt();
 }
 void CSO_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[9], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[9], 0, 0);
     halt();
 }
 void TS_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[10], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[10], 0, 0);
     halt();
 }
 void NP_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[11], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[11], 0, 0);
     halt();
 }
 void SS_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[12], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[12], 0, 0);
     halt();
 }
 void GP_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[13], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[13], 0, 0);
     halt();
 }
 void PF_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[14], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[14], 0, 0);
     halt();
 }
 void res15_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[15], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[15], 0, 0);
     halt();
 }
 void MF_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[16], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[16], 0, 0);
     halt();
 }
 void AC_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[17], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[17], 0, 0);
     halt();
 }
 void MC_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[18], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[18], 0, 0);
     halt();
 }
 void XM_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[19], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[19], 0, 0);
     halt();
 }
 void VE_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[20], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[20], 0, 0);
     halt();
 }
 void CP_exception(void) { // CP doesn't mean CSAM material here, it's an exception mnemonic.
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[21], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[21], 0, 0);
     halt();
 }
 void res22_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[22], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[22], 0, 0);
     halt();
 }
 void res23_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[23], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[23], 0, 0);
     halt();
 }
 void res24_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[24], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[24], 0, 0);
     halt();
 }
 void res25_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[25], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[25], 0, 0);
     halt();
 }
 void res26_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[26], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[26], 0, 0);
     halt();
 }
 void res27_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[27], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[27], 0, 0);
     halt();
 }
 void res28_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[28], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[28], 0, 0);
     halt();
 }
 void res29_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[29], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[29], 0, 0);
     halt();
 }
 void res30_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[30], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[30], 0, 0);
     halt();
 }
 void res31_exception(void) {
-    clear_screen(Pg_info, 0x00AAAAAA);
-    draw_string(emsg[31], Pg_info, 0, 0);
+    clear_screen(0x00AAAAAA);
+    draw_string(emsg[31], 0, 0);
     halt();
 }
 

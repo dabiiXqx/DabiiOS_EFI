@@ -14,5 +14,5 @@
 #define GLYPH_HEIGHT 16
 #define GLYPH_PER_ROW 6
 
-int draw_glyph(int index, FB_info *framebuffer_info, int y, int x);
-int draw_string(const char *text, FB_info *framebuffer_info ,int y, int x);
+int draw_glyph(int index, int y, int x);
+int draw_string(const char *text, int y, int x);

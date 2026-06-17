@@ -1,15 +1,5 @@
 #include "utils.h"
 
-void *kmemset(void *dest, int c, size_t n){
-	unsigned char *ptr = (unsigned char *)dest;
-	
-	while(n--){
-		*ptr++ = (unsigned char)c;
-	}
-
-	return dest;
-}
-
 int strlen(char *s){
 	int i = 0;
 	while(*s != '\0'){
@@ -27,13 +17,17 @@ void reverse(char s[]){
 	}
 }
 
-char *itoa(int value, char str[]) {
+uint64_t min(uint64_t a, uint64_t b) {
+	return (a < b) ? a : b;
+}
+
+char *itoa(uint64_t value, char str[]) {
 	int digit;
 	int i = 0;
 
 	if(value == 0) {
 		str[i] = '0';
-		str[i++] = '\0';
+		str[++i] = '\0';
 		return str;
 	}
 	while(value > 0){

@@ -1,14 +1,16 @@
 #include "fRend.h"
 #include <stdint.h>
+#include <fb.h>
 
-int draw_glyph(int i, FB_info *info, int y, int x){
+int draw_glyph(int i, int y, int x){
 	if(i == ' ')
 		return 0; //makes space instead of writing weird characters
+
 	int iAB = GetAlphaIndex(i);
 	int iNB = GetNumIndex(i);
 
 	uint32_t dx, dy;
-	uint32_t *base = (uint32_t *)info->Base;
+	uint32_t *base = (uint32_t *)Pg_info->Base;
 
 	if(iNB <= -1){
 
@@ -18,7 +20,7 @@ int draw_glyph(int i, FB_info *info, int y, int x){
 		for(dy = 0; dy < GLYPH_HEIGHT; dy++){
 			for(dx = 0; dx < GLYPH_WIDTH; dx++){
 				unsigned int pixel = (bitmap[(glyph_py + dy) * ATLAS_WIDTH + (glyph_px + dx)]) == 0xFF ? WHITE : BLACK;
-				base[(y + dy) * info->Pitch + (x + dx)] = pixel;
+				base[(y + dy) * Pg_info->Pitch + (x + dx)] = pixel;
 			}
 		}
 	}
@@ -30,7 +32,7 @@ int draw_glyph(int i, FB_info *info, int y, int x){
                 for(dy = 0; dy < GLYPH_HEIGHT; dy++){
                         for(dx = 0; dx < GLYPH_WIDTH; dx++){
                                 unsigned int pixel = (bitmap[(glyph_py + dy) * ATLAS_WIDTH + (glyph_px + dx)]) == 0xFF ? WHITE : BLACK;
-                                base[(y + dy) * info->Pitch + (x + dx)] = pixel;
+                                base[(y + dy) * Pg_info->Pitch + (x + dx)] = pixel;
                         }
                 }
 		
@@ -39,15 +41,15 @@ int draw_glyph(int i, FB_info *info, int y, int x){
 	return 0;
 }
 
-int draw_string(const char *s, FB_info *info, int y, int x){
+int draw_string(const char *s, int y, int x){
 	
 	int i;
 	for(i = 0; s[i] != '\0'; i++){
-		if(x > info->Width){
+		if(x > Pg_info->Width){
 			x = 0;
 			y += GLYPH_HEIGHT;
 		}
-		draw_glyph(s[i], info, y, x);
+		draw_glyph(s[i], y, x);
 		x += GLYPH_WIDTH;
 	}
 

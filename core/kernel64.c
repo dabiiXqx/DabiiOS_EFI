@@ -1,5 +1,6 @@
 #include <info.h>
 #include "kernel64.h"
+#include "fb.h"
 
 extern uint8_t BSS_START[];
 extern uint8_t BSS_END[];
@@ -12,32 +13,37 @@ void kernel_main(FB_info *info, Core *bInfo) {
 
 	Pg_info = info;
 
+	void *bitmap = pmm_init(bInfo);
+
 	gdt_init();
 	idt_init();
-	
-	clear_screen(info, 0x00000000);
+
+	clear_screen(0x00000000);
 	RSDP *rsdp = (RSDP *)bInfo->RSDP;
 	XSDT *xsdt = (XSDT *)rsdp->XsdtAddr;
 	
 	int validRsdp = valid_rsdp(rsdp);
 	int validXsdt = valid_xsdt(xsdt);
 
-	if((validXsdt && validRsdp)) draw_string("VALID TABLES", info, 0, 0);
+	if((validXsdt && validRsdp)) draw_string("VALID TABLES ", 0, 0);
 	else halt();
 
 	ACPISDTHeader *madt = find_table(xsdt, "APIC");
 	
 	if(madt == NULL) {
-		draw_string("INVALIDMADT", info, 16, 0);
+		draw_string("INVALIDMADT ", 16, 0);
 		halt();
 	}
 	
 	MADT* Madt = (MADT*)madt;
 	IOAPIC *ioapic = find_ioapic(Madt);
-	if(ioapic == NULL) draw_string("IOAPIC NOT FOUND", info, 16, 0);
-	else draw_string("IOAPIC FOUND", info, 16, 0);
+	if(ioapic == NULL) draw_string("IOAPIC NOT FOUND", 16, 0);
+	else draw_string("IOAPIC FOUND", 16, 0);
 
-	draw_string("WELCOME TO DABIIOS 123123098", info, 48, 0);
+	draw_string("WELCOME TO DABIIOS", 48, 0);
+
+	if(bitmap == (void *)0)
+		draw_string("BITMAP NOT ALLOCATED PMM FAILED", 64, 0);
 
 	halt();
 }

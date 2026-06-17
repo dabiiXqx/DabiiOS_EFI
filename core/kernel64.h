@@ -8,6 +8,7 @@
 #include "cpu/x86/gdt/gdt.h"
 #include "cpu/x86/idt/idt.h"
 #include "util/utils.h"
+#include "util/memory.h"
 #include "firmware/UefiMem/memorymap.h"
 
 #define halt() while (1) { asm volatile("hlt"); }

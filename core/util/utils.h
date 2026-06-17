@@ -1,7 +1,8 @@
 #pragma once
 #include <stddef.h>
+#include <stdint.h>
 
-void* kmemset(void* dest, int c, size_t n);
 int strlen(char *string);
 void reverse(char string[]);
-char *itoa(int value, char string[]);
+uint64_t min(uint64_t a, uint64_t b);
+char *itoa(uint64_t value, char string[]);
